@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for my portfolio project",
+  "type": "module",
+  "main": "server.jsx",
+  "scripts": {
+    "start": "node -r esm server.jsx",
+    "dev": "nodemon --exec 'node -r esm' server.jsx"
+  },
+  "keywords": [],
+  "author": "William Haynes",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
