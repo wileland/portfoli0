@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Header = () => (
+const Header = ({ setTab }) => (
   <motion.header
     className="bg-blue-500 p-4"
     initial={{ y: -250 }}
@@ -10,10 +10,11 @@ const Header = () => (
     <nav className="flex justify-between items-center">
       <h1 className="text-white text-2xl">William Haynes Portfolio</h1>
       <ul className="flex space-x-4">
-        <li><a href="#about" className="text-white">About</a></li>
-        <li><a href="#projects" className="text-white">Projects</a></li>
-        <li><a href="#critiques" className="text-white">Critiques</a></li>
-        <li><a href="#contact" className="text-white">Contact</a></li>
+        <li><button onClick={() => setTab('home')} className="text-white">Home</button></li>
+        <li><button onClick={() => setTab('about')} className="text-white">About</button></li>
+        <li><button onClick={() => setTab('projects')} className="text-white">Projects</button></li>
+        <li><button onClick={() => setTab('critiques')} className="text-white">Critiques</button></li>
+        <li><button onClick={() => setTab('contact')} className="text-white">Contact</button></li>
       </ul>
     </nav>
   </motion.header>
