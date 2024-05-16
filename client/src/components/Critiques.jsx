@@ -36,7 +36,7 @@ const Critiques = () => (
           <p className="text-lg mb-2"><strong>Feedback:</strong> {critique.feedback}</p>
           <p className="text-lg mb-2"><strong>Resolution:</strong> {critique.resolution}</p>
           {critique.link && (
-            <a href={critique.link} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+            <a href={critique.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
               View Details
             </a>
           )}

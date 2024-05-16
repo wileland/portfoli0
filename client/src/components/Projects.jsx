@@ -21,17 +21,17 @@ const projects = [
 
 const Projects = () => (
   <section id="projects" className="p-8 bg-gray-100">
-    <h2 className="text-3xl mb-8 text-center font-bold">My Projects</h2>
+    <h2 className="text-3xl mb-8 text-center">My Projects</h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project, index) => (
         <motion.div
           key={index}
           className="bg-white rounded-lg shadow-lg overflow-hidden"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, x: 10 }} // Shift to the right
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2, duration: 0.5 }}
-          style={{ willChange: "transform" }} // Helps to prevent layout shift
+          style={{ willChange: "transform" }}
         >
           <img 
             src={project.image} 
