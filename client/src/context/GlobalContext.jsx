@@ -1,6 +1,11 @@
 // client/src/context/GlobalContext.jsx
 import React, { createContext, useReducer, useContext } from 'react';
 
+// Action Types
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+const SET_TAB = 'SET_TAB';
+
 // Initial state
 const initialState = {
   isAuthenticated: false,
@@ -11,20 +16,20 @@ const initialState = {
 // Reducer function
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case LOGIN:
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload,
       };
-    case 'LOGOUT':
+    case LOGOUT:
       return {
         ...state,
         isAuthenticated: false,
         user: null,
         tab: 'home',
       };
-    case 'SET_TAB':
+    case SET_TAB:
       return {
         ...state,
         tab: action.payload,
