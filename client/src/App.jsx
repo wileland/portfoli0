@@ -1,6 +1,6 @@
 // client/src/App.jsx
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -10,6 +10,7 @@ import CheckoutForm from './components/CheckoutForm.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import Dashboard from './components/Dashboard.jsx';
+import Contact from './components/Contact.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { GlobalProvider, useGlobalContext } from './context/GlobalContext.jsx';
@@ -48,6 +49,8 @@ const AppContent = () => {
           return <Projects />;
         case 'critiques':
           return <Critiques />;
+        case 'contact':
+          return <Contact />;
         case 'login':
           return <Login />;
         case 'register':

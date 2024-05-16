@@ -1,16 +1,16 @@
+// client/src/components/Hero.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const Hero = () => (
-  <section className="bg-gray-800 text-white h-screen flex items-center justify-center">
-    <motion.div className="text-center"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1 }}>
-      <h1 className="text-5xl mb-4">Welcome to My Portfolio</h1>
-      <p className="text-xl">Showcasing my projects and skills</p>
-    </motion.div>
-  </section>
-);
+const Hero = () => {
+  return (
+    <div className="hero bg-blue-500 text-white p-8">
+      <h1 className="text-4xl font-bold">Welcome to William Haynes' Portfolio</h1>
+      <p className="text-xl mt-4">Showcasing projects, skills, and more</p>
+      <a href="#projects" className="mt-8 inline-block bg-white text-blue-500 font-bold py-2 px-4 rounded">
+        View Projects
+      </a>
+    </div>
+  );
+};
 
 export default Hero;
