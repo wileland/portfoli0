@@ -21,7 +21,7 @@ const projects = [
 
 const Projects = () => (
   <section id="projects" className="p-8 bg-gray-100">
-    <h2 className="text-3xl mb-8 text-center">My Projects</h2>
+    <h2 className="text-3xl mb-8 text-center font-bold">My Projects</h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project, index) => (
         <motion.div
@@ -31,14 +31,19 @@ const Projects = () => (
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2, duration: 0.5 }}
+          style={{ willChange: "transform" }} // Helps to prevent layout shift
         >
-          <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+          <img 
+            src={project.image} 
+            alt={`Screenshot of ${project.title}`} 
+            className="w-full h-48 object-cover"
+          />
           <div className="p-4">
             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             <p className="text-gray-700 mb-4">{project.description}</p>
             <div className="flex justify-between items-center">
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500">GitHub</a>
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-blue-500">Demo</a>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">GitHub</a>
+              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Demo</a>
             </div>
           </div>
         </motion.div>
