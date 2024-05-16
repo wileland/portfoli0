@@ -1,5 +1,6 @@
+// client/src/components/CheckoutForm.jsx
 import React from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -22,8 +23,7 @@ const CheckoutForm = () => {
     if (error) {
       console.error(error);
     } else {
-      console.log(paymentMethod);
-      // Send paymentMethod.id to your server for further processing
+      console.log('PaymentMethod:', paymentMethod);
     }
   };
 

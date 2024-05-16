@@ -1,3 +1,4 @@
+// client/webpack.config.js
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { fileURLToPath } from 'url';
@@ -47,6 +48,7 @@ export default {
     compress: true,
     port: 3000,
     hot: true, // Add this line
+    historyApiFallback: true,
     setupMiddlewares: (middlewares, devServer) => {
       return middlewares;
     },

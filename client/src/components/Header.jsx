@@ -1,3 +1,4 @@
+// client/src/components/Header.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -15,6 +16,8 @@ const Header = ({ setTab }) => (
         <li><button onClick={() => setTab('projects')} className="text-white">Projects</button></li>
         <li><button onClick={() => setTab('critiques')} className="text-white">Critiques</button></li>
         <li><button onClick={() => setTab('contact')} className="text-white">Contact</button></li>
+        <li><button onClick={() => setTab('login')} className="text-white">Login</button></li>
+        <li><button onClick={() => setTab('register')} className="text-white">Register</button></li>
       </ul>
     </nav>
   </motion.header>

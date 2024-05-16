@@ -1,57 +1,85 @@
+// client/src/App.jsx
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Projects from './components/Projects.jsx';
 import Critiques from './components/Critiques.jsx';
 import CheckoutForm from './components/CheckoutForm.jsx';
-import StripeProvider from './components/StripeProvider.jsx';
-import { GlobalProvider } from './context/GlobalContext.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+import Dashboard from './components/Dashboard.jsx';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { GlobalProvider, useGlobalContext } from './context/GlobalContext.jsx';
 
-function App() {
-  const [tab, setTab] = useState('home');
+// Replace with your actual public key
+const stripePromise = loadStripe('your-stripe-public-key');
+
+const AppContent = () => {
+  const { state, dispatch } = useGlobalContext();
 
   const renderTabContent = () => {
-    switch (tab) {
-      case 'home':
-        return (
-          <>
-            <Hero />
-            <About />
-            <Projects />
-            <Critiques />
-            <CheckoutForm />
-          </>
-        );
-      case 'about':
-        return <About />;
-      case 'projects':
-        return <Projects />;
-      case 'critiques':
-        return <Critiques />;
-      case 'checkout':
-        return <CheckoutForm />;
-      default:
-        return (
-          <>
-            <Hero />
-            <About />
-            <Projects />
-            <Critiques />
-            <CheckoutForm />
-          </>
-        );
+    if (state.isAuthenticated) {
+      switch (state.tab) {
+        case 'dashboard':
+          return <Dashboard />;
+        default:
+          return <Dashboard />;
+      }
+    } else {
+      switch (state.tab) {
+        case 'home':
+          return (
+            <>
+              <Hero />
+              <About />
+              <Projects />
+              <Critiques />
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+              </Elements>
+            </>
+          );
+        case 'about':
+          return <About />;
+        case 'projects':
+          return <Projects />;
+        case 'critiques':
+          return <Critiques />;
+        case 'login':
+          return <Login />;
+        case 'register':
+          return <Register />;
+        default:
+          return (
+            <>
+              <Hero />
+              <About />
+              <Projects />
+              <Critiques />
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+              </Elements>
+            </>
+          );
+      }
     }
   };
 
   return (
+    <Router>
+      <Header setTab={(tab) => dispatch({ type: 'SET_TAB', payload: tab })} />
+      {renderTabContent()}
+    </Router>
+  );
+};
+
+function App() {
+  return (
     <GlobalProvider>
-      <StripeProvider>
-        <div className="App">
-          <Header setTab={setTab} />
-          {renderTabContent()}
-        </div>
-      </StripeProvider>
+      <AppContent />
     </GlobalProvider>
   );
 }
