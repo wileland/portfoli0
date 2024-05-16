@@ -1,6 +1,6 @@
 // client/src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -20,6 +20,16 @@ const stripePromise = loadStripe('your-stripe-public-key');
 
 const AppContent = () => {
   const { state, dispatch } = useGlobalContext();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      dispatch({ type: 'LOGIN', payload: user });
+      dispatch({ type: 'SET_TAB', payload: 'dashboard' });
+    } else {
+      dispatch({ type: 'SET_TAB', payload: 'home' });
+    }
+  }, [dispatch]);
 
   const renderTabContent = () => {
     if (state.isAuthenticated) {
