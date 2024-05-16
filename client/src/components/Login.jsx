@@ -9,22 +9,33 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     // Simulate a login API call
     dispatch({ type: 'LOGIN', payload: { email, password } });
     dispatch({ type: 'SET_TAB', payload: 'dashboard' });
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required
+          />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required
+          />
         </div>
         <button type="submit">Login</button>
       </form>

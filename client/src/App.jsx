@@ -1,6 +1,6 @@
 // client/src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -74,32 +74,7 @@ const AppContent = () => {
   return (
     <Router>
       <Header setTab={(tab) => dispatch({ type: 'SET_TAB', payload: tab })} />
-      <Switch>
-        <Route path="/" exact>
-          {renderTabContent()}
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/projects">
-          <Projects />
-        </Route>
-        <Route path="/critiques">
-          <Critiques />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      </Switch>
+      {renderTabContent()}
     </Router>
   );
 };

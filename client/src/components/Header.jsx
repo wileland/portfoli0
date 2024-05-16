@@ -11,11 +11,11 @@ const Header = ({ setTab }) => (
     <nav className="flex justify-between items-center">
       <h1 className="text-white text-2xl">William Haynes Portfolio</h1>
       <ul className="flex space-x-4">
-        <li><a href="#home" className="text-white" onClick={() => setTab('home')}>Home</a></li>
-        <li><a href="#about" className="text-white" onClick={() => setTab('about')}>About</a></li>
-        <li><a href="#projects" className="text-white" onClick={() => setTab('projects')}>Projects</a></li>
-        <li><a href="#critiques" className="text-white" onClick={() => setTab('critiques')}>Critiques</a></li>
-        <li><a href="#contact" className="text-white" onClick={() => setTab('contact')}>Contact</a></li>
+        <li><button className="text-white" onClick={() => setTab('home')}>Home</button></li>
+        <li><button className="text-white" onClick={() => setTab('about')}>About</button></li>
+        <li><button className="text-white" onClick={() => setTab('projects')}>Projects</button></li>
+        <li><button className="text-white" onClick={() => setTab('critiques')}>Critiques</button></li>
+        <li><button className="text-white" onClick={() => setTab('contact')}>Contact</button></li>
       </ul>
     </nav>
   </motion.header>
