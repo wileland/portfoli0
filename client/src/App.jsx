@@ -14,6 +14,8 @@ import Contact from './components/Contact.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { GlobalProvider, useGlobalContext } from './context/GlobalContext.jsx';
+import './tailwind.css';
+import './index.css';
 
 // Replace with your actual public key
 const stripePromise = loadStripe('your-stripe-public-key');
@@ -28,6 +30,11 @@ const AppContent = () => {
       dispatch({ type: 'SET_TAB', payload: 'dashboard' });
     } else {
       dispatch({ type: 'SET_TAB', payload: 'home' });
+    }
+
+    const darkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (darkMode) {
+      dispatch({ type: 'SET_DARK_MODE', payload: darkMode });
     }
   }, [dispatch]);
 
@@ -84,7 +91,9 @@ const AppContent = () => {
   return (
     <Router>
       <Header setTab={(tab) => dispatch({ type: 'SET_TAB', payload: tab })} />
-      {renderTabContent()}
+      <div className={state.darkMode ? 'dark' : 'light'}>
+        {renderTabContent()}
+      </div>
     </Router>
   );
 };
