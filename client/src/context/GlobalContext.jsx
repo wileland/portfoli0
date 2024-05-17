@@ -1,4 +1,3 @@
-// client/src/context/GlobalContext.jsx
 import React, { createContext, useReducer, useContext } from 'react';
 
 // Action Types

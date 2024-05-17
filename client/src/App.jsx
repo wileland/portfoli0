@@ -1,4 +1,3 @@
-// client/src/App.jsx
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header.jsx';
@@ -33,7 +32,7 @@ const AppContent = () => {
     }
 
     const darkMode = JSON.parse(localStorage.getItem('darkMode'));
-    if (darkMode) {
+    if (darkMode !== null) {
       dispatch({ type: 'SET_DARK_MODE', payload: darkMode });
     }
   }, [dispatch]);
@@ -91,7 +90,7 @@ const AppContent = () => {
   return (
     <Router>
       <Header setTab={(tab) => dispatch({ type: 'SET_TAB', payload: tab })} />
-      <div className={state.darkMode ? 'dark' : 'light'}>
+      <div className={state.darkMode ? 'dark-mode' : 'light-mode'}>
         {renderTabContent()}
       </div>
     </Router>

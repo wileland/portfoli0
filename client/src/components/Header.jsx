@@ -9,11 +9,18 @@ const Header = ({ setTab }) => {
   const { state, dispatch } = useGlobalContext();
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(scrollY, [0, 300], ['#fff', '#000']);
+  const { darkMode } = state;
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
     localStorage.removeItem('user');
     setTab('home');
+  };
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    dispatch({ type: 'SET_DARK_MODE', payload: newDarkMode });
+    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
   };
 
   return (
@@ -40,6 +47,14 @@ const Header = ({ setTab }) => {
           {state.isAuthenticated && (
             <li><button className="text-white" onClick={handleLogout}>Logout</button></li>
           )}
+          <li>
+            <button
+              className="text-white"
+              onClick={toggleDarkMode}
+            >
+              Toggle Dark Mode
+            </button>
+          </li>
         </ul>
       </nav>
     </motion.header>

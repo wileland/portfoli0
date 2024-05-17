@@ -6,8 +6,7 @@ const useTransform = (value, inputRange, outputRange) => {
   useEffect(() => {
     const range = inputRange[1] - inputRange[0];
     const progress = (value - inputRange[0]) / range;
-    const outputRangeSpan = outputRange[1] - outputRange[0];
-    const newValue = outputRange[0] + progress * outputRangeSpan;
+    const newValue = outputRange[0] + progress * (outputRange[1] - outputRange[0]);
     setTransformedValue(newValue);
   }, [value, inputRange, outputRange]);
 
