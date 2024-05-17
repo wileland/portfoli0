@@ -5,12 +5,14 @@ import React, { createContext, useReducer, useContext } from 'react';
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 const SET_TAB = 'SET_TAB';
+const SET_DARK_MODE = 'SET_DARK_MODE';
 
 // Initial state
 const initialState = {
   isAuthenticated: false,
   user: null,
   tab: 'home',
+  darkMode: false,
 };
 
 // Reducer function
@@ -33,6 +35,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         tab: action.payload,
+      };
+    case SET_DARK_MODE:
+      return {
+        ...state,
+        darkMode: action.payload,
       };
     default:
       return state;

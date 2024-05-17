@@ -1,0 +1,4 @@
+/* Add any additional styles needed for the header */
+header {
+  transition: background-color 0.3s ease;
+}

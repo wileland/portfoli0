@@ -1,10 +1,14 @@
-// client/src/components/Header.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useGlobalContext } from '../context/GlobalContext.jsx';
+import useScroll from '../hooks/useScroll.jsx';
+import useTransform from '../hooks/useTransform.jsx';
+import './Header.css';
 
 const Header = ({ setTab }) => {
   const { state, dispatch } = useGlobalContext();
+  const { scrollY } = useScroll();
+  const backgroundColor = useTransform(scrollY, [0, 300], ['#fff', '#000']);
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
@@ -17,6 +21,7 @@ const Header = ({ setTab }) => {
       className="bg-blue-500 p-4"
       initial={{ y: -250 }}
       animate={{ y: 0 }}
+      style={{ backgroundColor }}
     >
       <nav className="flex justify-between items-center">
         <h1 className="text-white text-2xl">William Haynes Portfolio</h1>
